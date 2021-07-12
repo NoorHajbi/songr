@@ -7,3 +7,8 @@
   td, th {
     vertical-align: middle;
   }
+
+.my-form{}
+.my-form label {}
+.my-form input{}
+.my-form .submit{}
