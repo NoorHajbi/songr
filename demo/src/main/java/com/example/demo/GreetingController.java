@@ -2,6 +2,8 @@ package com.example.demo;
 
 import com.example.demo.data.Album;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -52,7 +54,8 @@ public class GreetingController {
                                     @RequestParam(value="imageUrl") String imageUrl){
         Album album = new Album(title,artist,songCount,length,imageUrl);
         albumRepository.save(album);
-        return  new RedirectView("/albums");
+//        return  new RedirectView("/albums");
+        return new ResponseEntity<> (albumRepository, HttpStatus.CREATED);
     }
 
 }
