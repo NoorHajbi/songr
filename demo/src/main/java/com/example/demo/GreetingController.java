@@ -54,8 +54,8 @@ public class GreetingController {
                                     @RequestParam(value="imageUrl") String imageUrl){
         Album album = new Album(title,artist,songCount,length,imageUrl);
         albumRepository.save(album);
-//        return  new RedirectView("/albums");
-        return new ResponseEntity<> (albumRepository, HttpStatus.CREATED);
+        return  new RedirectView("/albums");
+//        return new ResponseEntity<> (albumRepository, HttpStatus.CREATED);
     }
 
 }
