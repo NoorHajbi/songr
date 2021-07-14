@@ -8,6 +8,7 @@ public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     String title;
     String artist;
     int songCount;
