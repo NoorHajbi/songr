@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="text-align:center; margin-left:auto; margin-right:auto; border: 4px solid white; width:500px; height:250px; margin-bottom:20px" th:each="song : ${songs}">
+  <p style="text-align:center; color:white; font-size:x-large">Song ID: <span th:text=${song.id}></span></p>
+  <p style="text-align:center; color:white; font-size:x-large">Song Title: <span th:text=${song.title}></span> </p>
+  <p style="text-align:center; color:white; font-size:x-large">Track Number: <span th:text=${song.trackNumber}></span></p>
+  <p style="text-align:center; color:white; font-size:x-large">Song Length: <span th:text=${song.length}></span></p>
+</div>
+</body>
+</html>

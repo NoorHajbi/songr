@@ -1,6 +1,7 @@
 package com.example.demo.data;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -14,6 +15,9 @@ public class Album {
     int songCount;
     double length;
     String imageUrl;
+
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
+    private List<Song> songs;
 
     public Album() {
     }
@@ -69,6 +73,10 @@ public class Album {
 
     public Long getId() {
         return id;
+    }
+
+    public List<Song> getSongs() {
+        return songs;
     }
 }
 
