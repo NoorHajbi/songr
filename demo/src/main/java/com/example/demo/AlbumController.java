@@ -1,5 +1,6 @@
-package com.example.demo.data;
+package com.example.demo;
 
+import com.example.demo.data.Album;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
