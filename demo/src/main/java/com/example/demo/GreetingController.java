@@ -1,12 +1,9 @@
 package com.example.demo;
 
-import com.example.demo.data.Album;
-import jdk.nashorn.internal.ir.RuntimeNode;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 
 @Controller
 public class GreetingController {
