@@ -1,1 +1,70 @@
-*{color:blue;}
+@import url('https://fonts.googleapis.com/css2?family=Coda+Caption:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@100&family=Oswald:wght@300&family=Poiret+One&display=swap');
+*{
+	box-sizing:border-box;
+	margin: 0 ;
+	font-family: 'Poiret One', cursive;
+}
+body{
+	height: 100hv;
+}
+
+
+.header{
+  background-color:#FF1493;
+}
+
+ul li {
+  display: inline-block;
+  padding-right: 20px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+ul{
+  text-align: center;
+}
+
+ul li a {
+  text-decoration: none;
+  font-size: 25px;
+  color: #F5F5F5;
+}
+
+ul li a i{
+  padding-right: 5px;
+}
+
+ul li a:hover {
+  color: #FFB6C1;
+}
+
+/*Main Part*/
+.main{
+  background:#F5F5F5;
+  margin: 0px;
+}
+
+.main .box img{
+	opacity: .9;
+	width:100%;
+	margin: 0px;
+	background: #e9e5fa;
+	border: 50px solid #e9e5fa;
+}
+.main .box img:hover{
+	opacity: 1;
+}
+
+/*Footer part*/
+.footer{
+    background-color:#FF1493;
+        margin-bottom:0px;
+        bottom:0px;
+        width:100%;
+
+}
+.footer center{
+    color:#F5F5F5;
+}
+
