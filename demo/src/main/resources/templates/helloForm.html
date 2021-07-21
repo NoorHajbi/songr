@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello Form</title>
+  <link th:href="@{/style.css}" rel="stylesheet" />
+  <link th:href="@{/hello.css}" rel="stylesheet" />
+</head>
+<body>
+
+<header class="header">
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li> <a href="/helloForm">Hello</a>
+    </li>
+    <li>
+      <a href="/capitalize">Capitalize</a>
+    </li>
+    <li>
+      <a href="/albums">Album</a>
+    </li>
+  </ul>
+</header>
+
+<main>
+<h1>Hello World</h1>
+<br><br>
+<form method="post" action="/hello">
+  <input type="text" name="name"/>
+  <input type="submit" value="Enter Your name!">
+</form>
+</main>
+
+<footer class="footer">
+  <br>
+  <center>Contact Me<br> <br>
+    Email : noor.hajbi@gmail.com <br> <br>
+    Phone : +9627777777 <br> <br>
+  </center>
+
+</footer>
+</body>
+</html>
+
