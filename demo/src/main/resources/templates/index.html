@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Capitalize</title>
+    <title>Home</title>
     <link th:href="@{/style.css}" rel="stylesheet" />
-    <link th:href="@{/hello.css}" rel="stylesheet" />
+
 </head>
 <body>
 
@@ -23,11 +22,14 @@
         </li>
     </ul>
 </header>
+<main class="main">
 
-<main>
-<h1 style="text-transform: uppercase;" th:text=${capitalizeME}></h1>
+    <center>
+         <div class="box">
+                <img src="https://i.pinimg.com/originals/4a/7a/b6/4a7ab6edd0014821531813aefe68d810.jpg" height="427">
+        </div>
+    </center>
 </main>
-
 <footer class="footer">
     <br>
     <center>Contact Me<br> <br>
@@ -37,4 +39,5 @@
 
 </footer>
 </body>
+
 </html>

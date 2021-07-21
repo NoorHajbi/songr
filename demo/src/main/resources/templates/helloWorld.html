@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Capitalize</title>
+    <title>Hello World</title>
     <link th:href="@{/style.css}" rel="stylesheet" />
     <link th:href="@{/hello.css}" rel="stylesheet" />
 </head>
@@ -25,7 +25,7 @@
 </header>
 
 <main>
-<h1 style="text-transform: uppercase;" th:text=${capitalizeME}></h1>
+<h1 th:text="${hello}"></h1>
 </main>
 
 <footer class="footer">
@@ -38,3 +38,9 @@
 </footer>
 </body>
 </html>
+
+<!--The implementation of the method body relies on a view technology-->
+<!--(in this case, Thymeleaf) to perform server-side rendering of the HTML. -->
+<!--Thymeleaf parses the greeting.html template and evaluates -->
+<!--the th:text expression to render the value of the ${name} parameter that was set in the controller.-->
+<!--The following listing (from src/main/resources/templates/greeting.html) shows the greeting.html template:-->
