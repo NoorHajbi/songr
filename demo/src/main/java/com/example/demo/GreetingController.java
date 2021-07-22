@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class GreetingController {
-    @Autowired
-    private AlbumRepository albumRepository;
+
     
     //1. Home
     @GetMapping("/")
