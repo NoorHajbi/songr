@@ -12,7 +12,7 @@ public class SongController {
     SongRepository songRepository;
 
     @Autowired
-    AlbumRepository albumRepositry;
+    AlbumRepository albumRepository;
 
     @GetMapping("/songs")
     public String getAllSongs(Model m){
@@ -31,10 +31,10 @@ public class SongController {
                           @RequestParam(value="length") double length,
                           @RequestParam(value= "trackNumber") int trackNumber,
                           @RequestParam(value="albumID") Long albumID, Model m){
-        Album album = albumRepositry.findById(albumID).get();
+        Album album = albumRepository.findById(albumID).get();
         Song song = new Song(title,length,trackNumber,album);
         songRepository.save(song);
-        Album newAlbum = albumRepositry.findById(album.getId()).get();
+        Album newAlbum = albumRepository.findById(album.getId()).get();
         m.addAttribute("songs", newAlbum.getSongs());
         return "/songs";
     }

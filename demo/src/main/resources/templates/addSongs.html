@@ -1,33 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>add Song</title>
+    <link th:href="@{/style.css}" rel="stylesheet"/>
+    <link th:href="@{/album.css}" rel="stylesheet"/>
 </head>
 <body>
-<form action="/songs" method="post" style="text-align:center; border: 5px solid black; width: 750px; margin-left:auto; margin-right:auto">
-  <br>
-  <br>
-  <label style="color:black; font-size:x-large">Song Title</label>
-  <input type="text" name="title" />
-  <br>
-  <br>
-  <label style="color:black; font-size:x-large">Track Number</label>
-  <input type="number" name="trackNumber" />
-  <br>
-  <br>
-  <label style="color:black; font-size:x-large">Length</label>
-  <input type="number" name="length" />
-  <br>
-  <br>
-  <label style="color:black; font-size:x-large">Album</label>
-  <input type="number" name="albumID" />
-  <br>
-  <br>
-  <input type="submit" value="Add Song!" style="color:black; font-size:larger; background-color: white; width: 150px; border: 2px solid pink">
-  <br>
-  <br>
-</form>
 
+<header class="header">
+    <ul>
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li><a href="/helloForm">Hello</a>
+        </li>
+        <li>
+            <a href="/capitalize">Capitalize</a>
+        </li>
+        <li>
+            <a href="/albums">Album</a>
+        </li>
+        <li>
+            <a href="/addAlbum">Add Album</a>
+        </li>
+    </ul>
+</header>
+<main class="addForm">
+    <center>
+        <form action="/songs" method="post" class="my-form">
+
+            <label>Title</label>
+            <br>
+            <input type="text" name="title" required="required"/>
+            <br>
+            <br>
+
+            <label>Track Number</label>
+            <br>
+            <input type="number" name="trackNumber" required="required"/>
+            <br>
+            <br>
+
+            <label>Length</label>
+            <br>
+            <input type="number" name="length" required="required"/>
+            <br>
+            <br>
+
+
+            <label>Album ID</label>
+            <br>
+            <input type="number" name="albumId" required="required"/>
+            <br>
+            <br>
+
+            <input type="submit" value="submit" class="submit">
+        </form>
+    </center>
+</main>
+<footer class="footer">
+    <br>
+    <center>Contact Me<br> <br>
+        Email : noor.hajbi@gmail.com <br> <br>
+        Phone : +9627777777 <br> <br>
+    </center>
+
+</footer>
 </body>
 </html>
+
