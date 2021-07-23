@@ -2,10 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Capitalize</title>
-    <link th:href="@{/style.css}" rel="stylesheet" />
-    <link th:href="@{/hello.css}" rel="stylesheet" />
-</head>
+    <title>Error</title>
+    <link th:href="@{/style.css}" rel="stylesheet"/>
+    <link th:href="@{/hello.css}" rel="stylesheet"/>
 <body>
 
 <header class="header">
@@ -13,7 +12,7 @@
         <li>
             <a href="/">Home</a>
         </li>
-        <li> <a href="/helloForm">Hello</a>
+        <li><a href="/helloForm">Hello</a>
         </li>
         <li>
             <a href="/capitalize">Capitalize</a>
@@ -28,7 +27,10 @@
 </header>
 
 <main>
-<h1 style="text-transform: uppercase;" th:text=${capitalizeME}></h1>
+    <h1>Error 500! </h1>
+    <br>
+    <br>
+    <a href="/">Go Home</a>
 </main>
 
 <footer class="footer">
