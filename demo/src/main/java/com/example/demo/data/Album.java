@@ -1,11 +1,23 @@
 package com.example.demo.data;
 
+import javax.persistence.*;
+
+
+@Entity
 public class Album {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     String title;
     String artist;
     int songCount;
     double length;
     String imageUrl;
+
+    public Album() {
+    }
+
 
     public Album(String title, String artist, int songCount, double length, String imageUrl) {
         this.title = title;
@@ -53,6 +65,10 @@ public class Album {
 
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
 

@@ -22,12 +22,16 @@
         <li>
             <a href="/albums">Album</a>
         </li>
+        <li>
+            <a href="/addAlbum">Add Album</a>
+        </li>
     </ul>
 </header>
 <main class="container">
     <table class="table" border="2">
         <thead>
         <tr>
+            <th scope="col">Id</th>
             <th scope="col">Title</th>
             <th scope="col">Image</th>
             <th scope="col">Artist</th>
@@ -36,7 +40,9 @@
         </tr>
         </thead>
         <tbody>
+<!--        the second album is for attribute name-->
         <tr th:each="album:${album}">
+            <td th:text="${album.id}"></td>
             <td th:text="${album.title}"></td>
             <td><img th:src="${album.imageUrl}" width="125"></td>
             <td th:text="${album.artist}"></td>

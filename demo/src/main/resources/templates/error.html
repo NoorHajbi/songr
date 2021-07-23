@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Home</title>
-    <link th:href="@{/style.css}" rel="stylesheet" />
-
-</head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <link th:href="@{/style.css}" rel="stylesheet"/>
+    <link th:href="@{/hello.css}" rel="stylesheet"/>
 <body>
 
 <header class="header">
@@ -12,7 +12,7 @@
         <li>
             <a href="/">Home</a>
         </li>
-        <li> <a href="/helloForm">Hello</a>
+        <li><a href="/helloForm">Hello</a>
         </li>
         <li>
             <a href="/capitalize">Capitalize</a>
@@ -25,14 +25,18 @@
         </li>
     </ul>
 </header>
-<main class="main">
 
-    <center>
-         <div class="box">
-                <img src="https://i.pinimg.com/originals/4a/7a/b6/4a7ab6edd0014821531813aefe68d810.jpg" height="427">
-        </div>
-    </center>
+<main>
+    <h1>Something went wrong! </h1>
+    <br>
+    <br>
+
+    <h2>Our Engineers are on it</h2>
+    <br>
+    <br>
+    <a href="/">Go Home</a>
 </main>
+
 <footer class="footer">
     <br>
     <center>Contact Me<br> <br>
@@ -42,5 +46,4 @@
 
 </footer>
 </body>
-
 </html>

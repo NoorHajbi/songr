@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class GreetingController {
+
+    
     //1. Home
     @GetMapping("/")
     public String home() {
@@ -42,7 +44,6 @@ public class GreetingController {
         model.addAttribute("capitalizeME", capitalizeME);
         return "capitalize"; //Html file name
     }
-
     @GetMapping("/capitalize")
     @ResponseBody
     public String capitalizeNull() {
