@@ -2,10 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Hello World</title>
-    <link th:href="@{/style.css}" rel="stylesheet" />
-    <link th:href="@{/hello.css}" rel="stylesheet" />
-</head>
+    <title>Error</title>
+    <link th:href="@{/style.css}" rel="stylesheet"/>
+    <link th:href="@{/hello.css}" rel="stylesheet"/>
 <body>
 
 <header class="header">
@@ -13,7 +12,7 @@
         <li>
             <a href="/">Home</a>
         </li>
-        <li> <a href="/helloForm">Hello</a>
+        <li><a href="/helloForm">Hello</a>
         </li>
         <li>
             <a href="/capitalize">Capitalize</a>
@@ -28,7 +27,10 @@
 </header>
 
 <main>
-<h1 th:text="${hello}"></h1>
+    <h1>Error 500! </h1>
+    <br>
+    <br>
+    <a href="/">Go Home</a>
 </main>
 
 <footer class="footer">
@@ -41,9 +43,3 @@
 </footer>
 </body>
 </html>
-
-<!--The implementation of the method body relies on a view technology-->
-<!--(in this case, Thymeleaf) to perform server-side rendering of the HTML. -->
-<!--Thymeleaf parses the greeting.html template and evaluates -->
-<!--the th:text expression to render the value of the ${name} parameter that was set in the controller.-->
-<!--The following listing (from src/main/resources/templates/greeting.html) shows the greeting.html template:-->
