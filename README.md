@@ -40,7 +40,7 @@
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
 ```
-
+  
 2. When the dependencies on postgres and JPA are added, The app will stop working until we have the configuration
    in `application.properties` to access your Postgres database.
    
@@ -53,15 +53,20 @@ spring.jpa.hibernate.ddl-auto=create-drop spring.jpa.properties.hibernate.format
 spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
 spring.jpa.database-platform=org.hibernate.dialect.PostgreSQL9Dialect
    ```
-   
+     
 3. Update Album model so that it can be saved in a database.
+     
+
 4. A user should be able to add albums to the site.
 
-   `http://localhost:8080/addAlbum` ->
+   `http://localhost:8080/addAlbum` ->  
    Form page, for adding Album to DB.
-      
+       
+ 
 5. A user should be able to see information about all the albums on the site.
-6. Error Page, steps: 
+
+
+6. Error Page, steps:
 - `server.error.whitelabel.enabled=false` ->
   Adding this the `application.properties` file,
   will disable the error page and show a concise page that originates from the underlying application container.
