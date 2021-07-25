@@ -14,7 +14,8 @@ import java.util.ArrayList;
 @Controller
 public class AlbumController {
 
-    @Autowired
+    @Autowired // It is for **dependency injection**
+    // which is a technique in which an object receives other objects that it depends on. 
     private AlbumRepository albumRepository;
 
     @GetMapping("/albums")
