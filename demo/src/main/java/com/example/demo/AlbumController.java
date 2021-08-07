@@ -1,10 +1,12 @@
 package com.example.demo;
 
 import com.example.demo.data.Album;
+import com.example.demo.data.Song;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
@@ -16,7 +18,10 @@ public class AlbumController {
 
     @Autowired // It is for **dependency injection**
     // which is a technique in which an object receives other objects that it depends on. 
-    private AlbumRepository albumRepository;
+    AlbumRepository albumRepository;
+
+    @Autowired
+    SongRepository songRepository;
 
     @GetMapping("/albums")
     public String albums(Model model) {
@@ -50,4 +55,28 @@ public class AlbumController {
         albumRepository.save(album);
         return  new RedirectView("/albums");
     }
+
+    //show particular album's information
+    @GetMapping("/songs/{id}")
+    public String getAllSongsFromAlbum(@PathVariable Long id, Model m){
+
+        Album currentAlbum = albumRepository.findById(id).get();
+
+        m.addAttribute("currentAlbum",currentAlbum);
+        return "addSongs";
+    }
+
+
+    //add new songs
+    @PostMapping("/songs/{id}")
+    public RedirectView addSong(@PathVariable Long id,
+                                @RequestParam(value = "title") String title ,
+                                @RequestParam(value="length") double length,
+                                @RequestParam(value= "trackNumber") int trackNumber ){
+        Album album = albumRepository.findById(id).get();
+        Song song = new Song(title,length,trackNumber,album);
+        songRepository.save(song);
+        return new RedirectView("/songs/{id}");
+    }
+
 }

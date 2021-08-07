@@ -16,7 +16,6 @@ public class Song {
     private Album album;
 
     public Song() {
-
     }
 
     public Song(String title, double length, int trackNumber, Album album) {

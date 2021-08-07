@@ -49,7 +49,7 @@
             <td th:text="${album.songCount}"></td>
             <td th:text="${album.length}"></td>
             <td th:each="song: ${album.songs}">
-                <p th:text=" 'Songs: ' + ${song.title} + ': ' + ${song.length} + ' Seconds'"></p>
+            <a th:href="@{'/songs/' + ${album.id}}" >Check album's songs</a>
             </td>
         </tr>
         </tbody>

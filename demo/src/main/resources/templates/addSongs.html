@@ -28,17 +28,22 @@
 </header>
 <main class="addForm">
     <center>
-        <form action="/songs" method="post" class="my-form">
+        <h1><a href="/albums">All Album Page</a></h1>
+        <h2>These are the songs in album <span th:text="${currentAlbum.title}"></span></h2>
+        <ul>
+            <li th:each="song: ${currentAlbum.getSongs()}">
+                <div th:text="${song.title}"></div>
+                <div th:text="${song.length}"></div>
+                <div th:text="${song.trackNumber}"></div>
+            </li>
+        </ul>
+
+        <h2> Add new Song</h2>
+        <form th:action="@{'/songs/'+${currentAlbum.id}}" method="POST" class="my-form">
 
             <label>Title</label>
             <br>
             <input type="text" name="title" required="required"/>
-            <br>
-            <br>
-
-            <label>Track Number</label>
-            <br>
-            <input type="number" name="trackNumber" required="required"/>
             <br>
             <br>
 
@@ -48,10 +53,9 @@
             <br>
             <br>
 
-
-            <label>Album ID</label>
+            <label>Track Number</label>
             <br>
-            <input type="number" name="albumId" required="required"/>
+            <input type="number" name="trackNumber" required="required"/>
             <br>
             <br>
 
