@@ -9,36 +9,18 @@
 <body>
 
 <header class="header">
-    <ul>
-        <li>
-            <a href="/">Home</a>
-        </li>
-        <li><a href="/helloForm">Hello</a>
-        </li>
-        <li>
-            <a href="/capitalize">Capitalize</a>
-        </li>
-        <li>
-            <a href="/albums">Album</a>
-        </li>
-        <li>
-            <a href="/addAlbum">Add Album</a>
-        </li>
-    </ul>
+    <nav th:replace="fragments/nav :: navigation"></nav>
 </header>
 <main class="addForm">
     <center>
-        <h1><a href="/albums">All Album Page</a></h1>
-        <h2>These are the songs in album <span th:text="${currentAlbum.title}"></span></h2>
-        <ul>
-            <li th:each="song: ${currentAlbum.getSongs()}">
-                <div th:text="${song.title}"></div>
-                <div th:text="${song.length}"></div>
-                <div th:text="${song.trackNumber}"></div>
-            </li>
-        </ul>
-
-        <h2> Add new Song</h2>
+        <p>These are the songs in album <b th:text="${currentAlbum.title}"></b></p>
+        <div th:each="song: ${currentAlbum.getSongs()}">
+            <p><b> Song Title:</b> <span th:text="${song.title}"></span>,
+                <b>Song Length:</b> <span th:text="${song.length}"></span>,
+                <b>Track Number: </b><span th:text="${song.trackNumber}"></span>
+        </p>
+        </div>
+        <p> Add new Song</p>
         <form th:action="@{'/songs/'+${currentAlbum.id}}" method="POST" class="my-form">
 
             <label>Title</label>

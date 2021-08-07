@@ -10,22 +10,7 @@
 <body>
 
 <header class="header">
-    <ul>
-        <li>
-            <a href="/">Home</a>
-        </li>
-        <li><a href="/helloForm">Hello</a>
-        </li>
-        <li>
-            <a href="/capitalize">Capitalize</a>
-        </li>
-        <li>
-            <a href="/albums">Album</a>
-        </li>
-        <li>
-            <a href="/addAlbum">Add Album</a>
-        </li>
-    </ul>
+    <nav th:replace="fragments/nav :: navigation"></nav>
 </header>
 <main class="addForm">
     <center>
@@ -38,28 +23,28 @@
 
             <label>Artist</label>
             <br>
-            <input type="text" name="artist"  required="required"/>
+            <input type="text" name="artist" required="required"/>
             <br>
             <br>
 
 
             <label>Song Count</label>
             <br>
-            <input type="number" name="songCount"  required="required"/>
+            <input type="number" name="songCount" required="required"/>
             <br>
             <br>
 
 
             <label>Length</label>
             <br>
-            <input type="number" name="length"  required="required"/>
+            <input type="number" name="length" required="required"/>
             <br>
             <br>
 
 
             <label>Image URL</label>
             <br>
-            <input type="text" name="imageUrl"  required="required"/>
+            <input type="text" name="imageUrl" required="required"/>
             <br>
             <br>
 

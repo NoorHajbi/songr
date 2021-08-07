@@ -13,6 +13,7 @@ public class Song {
     private int trackNumber;
 
     @ManyToOne
+    @JoinColumn(name="album_id", nullable=false)
     private Album album;
 
     public Song() {
