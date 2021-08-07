@@ -49,6 +49,5 @@ public class AlbumController {
         Album album = new Album(title,artist,songCount,length,imageUrl);
         albumRepository.save(album);
         return  new RedirectView("/albums");
-//        return new ResponseEntity<> (albumRepository, HttpStatus.CREATED);
     }
 }

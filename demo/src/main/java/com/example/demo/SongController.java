@@ -19,7 +19,7 @@ public class SongController {
     public String getAllSongs(Model m){
         List<Song> songs = songRepository.findAll();
         m.addAttribute("songs",songs);
-        return "songs";
+        return "song";
     }
 
     @GetMapping("/addSong")

@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     private String title;
     private double length;
@@ -26,7 +26,7 @@ public class Song {
         this.album = album;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
