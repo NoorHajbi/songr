@@ -86,11 +86,12 @@ spring.jpa.database-platform=org.hibernate.dialect.PostgreSQL9Dialect
 4. A user is able to add songs to an album.
 5. A user is able to see the songs that belong to an album when looking at that album.
 
-`http://localhost:8080/addSong` ->  
-   Form page, for adding Song to DB.
+`http://localhost:8080/addSong/{AlbumId}` ->  
+   will send you to the page that contains:
+1. songs on that album.
+2. form to add song on the album.
 
-`http://localhost:8080/songs` ->
-   will send you to a page with added Songs.
+
 
 ---
 

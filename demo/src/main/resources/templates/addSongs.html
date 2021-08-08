@@ -14,13 +14,16 @@
 <main class="addForm">
     <center>
         <p>These are the songs in album <b th:text="${currentAlbum.title}"></b></p>
+        <br>
         <div th:each="song: ${currentAlbum.getSongs()}">
             <p><b> Song Title:</b> <span th:text="${song.title}"></span>,
                 <b>Song Length:</b> <span th:text="${song.length}"></span>,
                 <b>Track Number: </b><span th:text="${song.trackNumber}"></span>
-        </p>
+            </p>
         </div>
+        <br>
         <p> Add new Song</p>
+        <br>
         <form th:action="@{'/songs/'+${currentAlbum.id}}" method="POST" class="my-form">
 
             <label>Title</label>
