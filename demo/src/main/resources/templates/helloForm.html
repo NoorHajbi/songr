@@ -9,22 +9,7 @@
 <body>
 
 <header class="header">
-  <ul>
-    <li>
-      <a href="/">Home</a>
-    </li>
-    <li> <a href="/helloForm">Hello</a>
-    </li>
-    <li>
-      <a href="/capitalize">Capitalize</a>
-    </li>
-    <li>
-      <a href="/albums">Album</a>
-    </li>
-    <li>
-      <a href="/addAlbum">Add Album</a>
-    </li>
-  </ul>
+  <nav th:replace="fragments/nav :: navigation"></nav>
 </header>
 
 <main>

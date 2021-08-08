@@ -9,36 +9,26 @@
 <body>
 
 <header class="header">
-    <ul>
-        <li>
-            <a href="/">Home</a>
-        </li>
-        <li><a href="/helloForm">Hello</a>
-        </li>
-        <li>
-            <a href="/capitalize">Capitalize</a>
-        </li>
-        <li>
-            <a href="/albums">Album</a>
-        </li>
-        <li>
-            <a href="/addAlbum">Add Album</a>
-        </li>
-    </ul>
+    <nav th:replace="fragments/nav :: navigation"></nav>
 </header>
 <main class="addForm">
     <center>
-        <form action="/songs" method="post" class="my-form">
+        <p>These are the songs in album <b th:text="${currentAlbum.title}"></b></p>
+        <br>
+        <div th:each="song: ${currentAlbum.getSongs()}">
+            <p><b> Song Title:</b> <span th:text="${song.title}"></span>,
+                <b>Song Length:</b> <span th:text="${song.length}"></span>,
+                <b>Track Number: </b><span th:text="${song.trackNumber}"></span>
+            </p>
+        </div>
+        <br>
+        <p> Add new Song</p>
+        <br>
+        <form th:action="@{'/songs/'+${currentAlbum.id}}" method="POST" class="my-form">
 
             <label>Title</label>
             <br>
             <input type="text" name="title" required="required"/>
-            <br>
-            <br>
-
-            <label>Track Number</label>
-            <br>
-            <input type="number" name="trackNumber" required="required"/>
             <br>
             <br>
 
@@ -48,10 +38,9 @@
             <br>
             <br>
 
-
-            <label>Album ID</label>
+            <label>Track Number</label>
             <br>
-            <input type="number" name="albumId" required="required"/>
+            <input type="number" name="trackNumber" required="required"/>
             <br>
             <br>
 
