@@ -10,10 +10,10 @@ public class Album {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private  String title;
+    private String title;
 
     private String artist;
-    private  int songCount;
+    private int songCount;
     private double length;
 
     private String imageUrl;
@@ -21,9 +21,12 @@ public class Album {
     @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
     private List<Song> songs;
 
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable=false)
+    private ApplicationUser applicationUser;
+
     public Album() {
     }
-
 
     public Album(String title, String artist, int songCount, double length, String imageUrl) {
         this.title = title;

@@ -19,6 +19,12 @@ public class Song {
     public Song() {
     }
 
+    public Song(String title, double length, int trackNumber) {
+        this.title = title;
+        this.length = length;
+        this.trackNumber = trackNumber;
+        this.album = this.getAlbum();
+    }
     public Song(String title, double length, int trackNumber, Album album) {
         this.title = title;
         this.length = length;
