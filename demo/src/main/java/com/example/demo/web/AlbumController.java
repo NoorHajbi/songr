@@ -1,21 +1,27 @@
-package com.example.demo;
+package com.example.demo.web;
 
 import com.example.demo.data.Album;
+import com.example.demo.data.Song;
+import com.example.demo.infrastructure.AlbumRepository;
+import com.example.demo.infrastructure.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.ArrayList;
-
 @Controller
 public class AlbumController {
 
+    @Autowired // It is for **dependency injection**
+    // which is a technique in which an object receives other objects that it depends on. 
+    AlbumRepository albumRepository;
+
     @Autowired
-    private AlbumRepository albumRepository;
+    SongRepository songRepository;
 
     @GetMapping("/albums")
     public String albums(Model model) {
@@ -33,7 +39,7 @@ public class AlbumController {
         return "album";
     }
 
- 
+
     @GetMapping("/addAlbum")
     public String addAlbums(){
         return "addAlbums";
@@ -48,6 +54,29 @@ public class AlbumController {
         Album album = new Album(title,artist,songCount,length,imageUrl);
         albumRepository.save(album);
         return  new RedirectView("/albums");
-//        return new ResponseEntity<> (albumRepository, HttpStatus.CREATED);
     }
+
+    //show particular album's information
+    @GetMapping("/songs/{id}")
+    public String getAllSongsFromAlbum(@PathVariable Long id, Model m){
+
+        Album currentAlbum = albumRepository.findById(id).get();
+
+        m.addAttribute("currentAlbum",currentAlbum);
+        return "addSongs";
+    }
+
+
+    //add new songs
+    @PostMapping("/songs/{id}")
+    public RedirectView addSong(@PathVariable Long id,
+                                @RequestParam(value = "title") String title ,
+                                @RequestParam(value="length") double length,
+                                @RequestParam(value= "trackNumber") int trackNumber ){
+        Album album = albumRepository.findById(id).get();
+        Song song = new Song(title,length,trackNumber,album);
+        songRepository.save(song);
+        return new RedirectView("/songs/{id}");
+    }
+
 }

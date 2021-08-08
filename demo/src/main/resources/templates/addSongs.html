@@ -2,10 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>add Song</title>
     <link th:href="@{/style.css}" rel="stylesheet"/>
     <link th:href="@{/album.css}" rel="stylesheet"/>
-
 </head>
 <body>
 
@@ -14,26 +13,24 @@
 </header>
 <main class="addForm">
     <center>
-        <form action="/albums" method="POST" class="my-form">
+        <p>These are the songs in album <b th:text="${currentAlbum.title}"></b></p>
+        <br>
+        <div th:each="song: ${currentAlbum.getSongs()}">
+            <p><b> Song Title:</b> <span th:text="${song.title}"></span>,
+                <b>Song Length:</b> <span th:text="${song.length}"></span>,
+                <b>Track Number: </b><span th:text="${song.trackNumber}"></span>
+            </p>
+        </div>
+        <br>
+        <p> Add new Song</p>
+        <br>
+        <form th:action="@{'/songs/'+${currentAlbum.id}}" method="POST" class="my-form">
+
             <label>Title</label>
             <br>
             <input type="text" name="title" required="required"/>
             <br>
             <br>
-
-            <label>Artist</label>
-            <br>
-            <input type="text" name="artist" required="required"/>
-            <br>
-            <br>
-
-
-            <label>Song Count</label>
-            <br>
-            <input type="number" name="songCount" required="required"/>
-            <br>
-            <br>
-
 
             <label>Length</label>
             <br>
@@ -41,13 +38,11 @@
             <br>
             <br>
 
-
-            <label>Image URL</label>
+            <label>Track Number</label>
             <br>
-            <input type="text" name="imageUrl" required="required"/>
+            <input type="number" name="trackNumber" required="required"/>
             <br>
             <br>
-
 
             <input type="submit" value="submit" class="submit">
         </form>
@@ -63,3 +58,4 @@
 </footer>
 </body>
 </html>
+
