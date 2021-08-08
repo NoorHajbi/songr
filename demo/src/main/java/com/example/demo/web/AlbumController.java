@@ -4,14 +4,18 @@ import com.example.demo.data.Album;
 import com.example.demo.data.Song;
 import com.example.demo.infrastructure.AlbumRepository;
 import com.example.demo.infrastructure.SongRepository;
+import com.example.demo.services.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
+import javax.validation.Valid;
+
 
 @Controller
 public class AlbumController {
@@ -22,6 +26,12 @@ public class AlbumController {
 
     @Autowired
     SongRepository songRepository;
+
+    private final AlbumService albumService;
+
+    public AlbumController(AlbumService albumService) {
+        this.albumService = albumService;
+    }
 
     @GetMapping("/albums")
     public String albums(Model model) {
@@ -41,28 +51,28 @@ public class AlbumController {
 
 
     @GetMapping("/addAlbum")
-    public String addAlbums(){
+    public String addAlbums() {
         return "addAlbums";
     }
 
     @PostMapping("/albums")
-    public RedirectView albumSubmit(@RequestParam(value = "title") String title ,
-                                    @RequestParam(value= "artist") String artist,
-                                    @RequestParam(value="songCount") int songCount,
-                                    @RequestParam(value="length") double length,
-                                    @RequestParam(value="imageUrl") String imageUrl){
-        Album album = new Album(title,artist,songCount,length,imageUrl);
+    public RedirectView albumSubmit(@RequestParam(value = "title") String title,
+                                    @RequestParam(value = "artist") String artist,
+                                    @RequestParam(value = "songCount") int songCount,
+                                    @RequestParam(value = "length") double length,
+                                    @RequestParam(value = "imageUrl") String imageUrl) {
+        Album album = new Album(title, artist, songCount, length, imageUrl);
         albumRepository.save(album);
-        return  new RedirectView("/albums");
+        return new RedirectView("/albums");
     }
 
     //show particular album's information
     @GetMapping("/songs/{id}")
-    public String getAllSongsFromAlbum(@PathVariable Long id, Model m){
+    public String getAllSongsFromAlbum(@PathVariable Long id, Model m) {
 
         Album currentAlbum = albumRepository.findById(id).get();
 
-        m.addAttribute("currentAlbum",currentAlbum);
+        m.addAttribute("currentAlbum", currentAlbum);
         return "addSongs";
     }
 
@@ -70,13 +80,61 @@ public class AlbumController {
     //add new songs
     @PostMapping("/songs/{id}")
     public RedirectView addSong(@PathVariable Long id,
-                                @RequestParam(value = "title") String title ,
-                                @RequestParam(value="length") double length,
-                                @RequestParam(value= "trackNumber") int trackNumber ){
+                                @RequestParam(value = "title") String title,
+                                @RequestParam(value = "length") double length,
+                                @RequestParam(value = "trackNumber") int trackNumber) {
         Album album = albumRepository.findById(id).get();
-        Song song = new Song(title,length,trackNumber,album);
+        Song song = new Song(title, length, trackNumber, album);
         songRepository.save(song);
         return new RedirectView("/songs/{id}");
+    }
+
+    /*****Class Demo*****/
+
+//    @GetMapping("/edit/{id}")
+//    String showUpdateForm(@PathVariable("id") long id, Model model) {
+//        Album album = albumService.getAlbum(id);
+//
+//        model.addAttribute("album", album);
+//        return "update-album";
+//    }
+//
+//    @PostMapping("/update/{id}")
+//    String updateAlbum(@PathVariable("id") long id, @Valid Album album, BindingResult result, Model model) {
+//        if (result.hasErrors()) {
+//            album.setAlbumId(id);
+//            return "update-album";
+//        }
+//
+//        albumService.saveAlbum(album);
+//        return "redirect:/albums";
+//    }
+
+    @GetMapping("/delete/{id}")
+    String deleteAlbum(@PathVariable("id") long id, Model model) {
+        Album album = albumService.getAlbum(id);
+        albumService.deleteAlbum(album);
+        return "redirect:/albums";
+    }
+
+    @GetMapping("/view/{id}")
+    String showAlbum(@PathVariable("id") long id, Model model) {
+        Album album = albumService.getAlbum(id);
+
+        model.addAttribute("album", album);
+        model.addAttribute("songs", album.getSongs());
+
+        return "album";
+    }
+
+    @PostMapping("/albums/{id}")
+    RedirectView addSong(@RequestParam String title,
+                         @RequestParam double length,
+                         @RequestParam int trackNumber,
+                         @PathVariable("id") long id) {
+        albumService.addSong(id, new Song(title, length, trackNumber));
+
+        return new RedirectView("/view/" + id);
     }
 
 }
